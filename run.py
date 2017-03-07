@@ -1,6 +1,7 @@
 from app import *
 from app.api.post import *
 from app.api.get import *
+from app.controllers.controller import *
 
 @app.after_request
 def after_request(response):

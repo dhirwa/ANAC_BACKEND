@@ -34,6 +34,47 @@ def appl(aid):
     else:
         return jsonify({'message':'0'})
 
+#============================================== RECOMMANDATIONS ==============================
+
+@app.route('/anac/personel')
+def reco():
+    perso = Personnel.query.all()
+    if perso:
+        result = persos_schema.dump(perso)
+        return jsonify(result.data)
+    else:
+        return jsonify({'message':'0'})
+
+@app.route('/anac/personel/application/<int:appl>')
+def rec(appl):
+    perso = Personnel.query.filter_by(applic_id=appl)
+    if perso:
+        result = persos_schema.dump(rec)
+        return jsonify(result.data)
+    else:
+        return jsonify({'message':'0'})
+
+#============================================== SKILL TEST REPORT =============================
+
+@app.route('/anac/aeronefs')
+def skill():
+    skil = Aeronefs.query.all()
+    if skil:
+        result = aeros_schema.dump(skil)
+        return jsonify(result.data)
+    else:
+        return jsonify({'message':'0'})
+
+
+@app.route('/anac/aeronef/application/<int:aer>')
+def skill__(aer):
+    aero = Aeronefs.query.filter_by(applic_id=aer)
+    if skill:
+        result = aeros_schema.dump(skill)
+        return jsonify(result.data)
+    else:
+        return jsonify({'message':'0'})
+
 #============================================= ADMIN USERS ===========================================
 
 @app.route('/anac/admin_users')
